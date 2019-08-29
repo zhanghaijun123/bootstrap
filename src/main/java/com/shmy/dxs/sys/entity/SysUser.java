@@ -1,5 +1,7 @@
 package com.shmy.dxs.sys.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,11 +19,13 @@ import java.util.List;
 public class SysUser implements UserDetails {
     private int id;
     private String login;
-    private String password;
+    private String passWord;
     private String userName;
     private String address;
     private String job;
     private long groupId;
+    @JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthDate;
     private String city;
     private String district;
@@ -29,6 +33,8 @@ public class SysUser implements UserDetails {
     private String streetAddress;
     private String state;
     private String type;
+    @JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date lastLoginDate;
     // 用户角色信息
     private List<SysRole> roles;
@@ -59,9 +65,6 @@ public class SysUser implements UserDetails {
         this.login = login;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getUserName() {
         return userName;
@@ -69,6 +72,14 @@ public class SysUser implements UserDetails {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public String getAddress() {
@@ -191,7 +202,7 @@ public class SysUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.getPassword();
+        return this.getPassWord();
     }
 
     @Override

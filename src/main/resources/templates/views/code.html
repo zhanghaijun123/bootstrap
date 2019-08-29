@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap 模板</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<p><code>&lt;header&gt;</code> 作为内联元素被包围。</p>
+<p>如果需要把代码显示为一个独立的块元素，请使用 &lt;pre&gt; 标签：</p>
+<pre>
+    &lt;article&gt;
+        &lt;h1&gt;Article Heading&lt;/h1&gt;
+    &lt;/article&gt;
+</pre>
+<hr/>
+<div class="container">
+    <h2>代码</h2>
+    <p>使用 var 元素表示变量：</p>
+    <p><var>x</var> = <var>a</var><var>b</var> + <var>y</var></p>
+</div>
+<hr/>
+<div class="container">
+    <h2>代码</h2>
+    <p>使用 pre 元素输出多行:</p>
+    <pre>在 pre 元素中的文本
+	宽度的显示与文本的宽度一样，
+	保留了  空  格 和
+
+	换行。</pre>
+    <p>如果你添加 .pre-scrollable 类,  pre 元素最大的高度 max-height 为 350px ，并生成一个 Y 轴的滚动条:</p>
+    <pre class="pre-scrollable">在 pre 元素中的文本
+	宽度的显示与文本的宽度一样，
+	保留了  空  格 和
+
+	换行。</pre>
+</div>
+<hr/>
+<div class="container">
+    <h2>代码</h2>
+    <p>使用 kbd 元素表示按键输入:</p>
+    <p>使用 <kbd>ctrl + p</kbd> 来打开打印窗口。</p>
+</div>
+<hr/>
+<div class="container">
+    <h2>代码</h2>
+    <p>使用 samp 元素包含电脑输出的内容:</p>
+    <p><samp>This text is output from a computer program....</samp></p>
+</div>
+<hr/>
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="/static/js/jquery-1.9.1.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

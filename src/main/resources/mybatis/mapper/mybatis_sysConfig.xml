@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shmy.dxs.sys.dao.SysConfigDao">
+	<resultMap type="com.shmy.dxs.sys.entity.SysConfig" id="SysConfigMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="codeValue" column="code_value"/>
+		<result property="remark" column="remark"/>
+		<result property="type" column="type"/>
+		<result property="sorted" column="sorted"/>
+	</resultMap>
+
+	<!--根据主键获取对象-->
+	<select id="get" parameterType="com.shmy.dxs.sys.entity.SysConfig" resultMap="SysConfigMap">
+		SELECT id,name,code_value,remark,type,sorted FROM sys_config 
+		WHERE id=#{id}
+	</select>
+
+	<!--保存-->
+	<insert id="save" parameterType="com.shmy.dxs.sys.entity.SysConfig">
+		INSERT INTO sys_config(id,name,code_value,remark,type,sorted)
+		VALUES(#{id},#{name},#{codeValue},#{remark},#{type},#{sorted})
+	</insert>
+
+	<!--修改-->
+	<update id="update" parameterType="com.shmy.dxs.sys.entity.SysConfig">
+		UPDATE sys_config SET name=#{name},code_value=#{codeValue},remark=#{remark},type=#{type},sorted=#{sorted}
+		WHERE id=#{id}
+	</update>
+
+	<!--删除-->
+	<delete id="delete" parameterType="com.shmy.dxs.sys.entity.SysConfig">
+		 DELETE FROM sys_config WHERE id=#{id}
+	</delete>
+
+	<!--分页查询-->
+	<select id="findByPage" parameterType="com.shmy.dxs.sys.entity.SysConfigQuery" resultMap="SysConfigMap">
+		SELECT id,name,code_value,remark,type,sorted FROM sys_config
+		WHERE 1=1
+		<if test="id!=null and id!='' "  >
+		AND id=#{id}
+		</if>
+		<if test="name!=null and name!='' "  >
+		AND name=#{name}
+		</if>
+		<if test="codeValue!=null and codeValue!='' "  >
+		AND code_value=#{codeValue}
+		</if>
+		<if test="remark!=null and remark!='' "  >
+		AND remark=#{remark}
+		</if>
+		<if test="type!=null and type!='' "  >
+		AND type=#{type}
+		</if>
+		<if test="sorted!=null and sorted!='' "  >
+		AND sorted=#{sorted}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+		limit #{offset},#{limit}
+	</select>
+
+	<!--统计-->
+	<select id="count" parameterType="com.shmy.dxs.sys.entity.SysConfigQuery" resultType="int">
+		SELECT count(*) FROM sys_config
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="name!=null and name!='' ">
+		AND name=#{name}
+		</if>
+		<if test="codeValue!=null and codeValue!='' ">
+		AND code_value=#{codeValue}
+		</if>
+		<if test="remark!=null and remark!='' ">
+		AND remark=#{remark}
+		</if>
+		<if test="type!=null and type!='' ">
+		AND type=#{type}
+		</if>
+		<if test="sorted!=null and sorted!='' ">
+		AND sorted=#{sorted}
+		</if>
+	</select>
+
+	<!--查询-->
+	<select id="query" parameterType="com.shmy.dxs.sys.entity.SysConfigQuery" resultMap="SysConfigMap">
+		SELECT id,name,code_value,remark,type,sorted FROM sys_config
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="name!=null and name!='' ">
+		AND name=#{name}
+		</if>
+		<if test="codeValue!=null and codeValue!='' ">
+		AND code_value=#{codeValue}
+		</if>
+		<if test="remark!=null and remark!='' ">
+		AND remark=#{remark}
+		</if>
+		<if test="type!=null and type!='' ">
+		AND type=#{type}
+		</if>
+		<if test="sorted!=null and sorted!='' ">
+		AND sorted=#{sorted}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+	</select>
+</mapper>

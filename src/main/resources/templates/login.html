@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>登录页面</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <style type="text/css">
         body {
             padding-top: 50px;
@@ -25,7 +27,7 @@
         <form name="form" th:action="@{/login}" action="/login" method="POST"> <!-- 3 -->
             <div class="form-group">
                 <label for="username">账号</label>
-                <input type="text" class="form-control" name="username" id="username" value="" placeholder="账号" />
+                <input type="text" class="form-control " name="username" id="username" value="" placeholder="账号" />
             </div>
             <div class="form-group">
                 <label for="password">密码</label>

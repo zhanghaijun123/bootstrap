@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.csdn.demo.sys.dao.UserDao">
+<mapper namespace="com.shmy.dxs.sys.dao.SysUserDao">
+    <resultMap type="com.shmy.dxs.sys.entity.SysUser" id="UserMap">
+        <id property="id" column="id"/>
+        <result property="login" column="login"/>
+        <result property="passWord" column="pass_word"/>
+        <result property="userName" column="user_name"/>
+        <result property="address" column="address"/>
+        <result property="job" column="job"/>
+        <result property="groupId" column="group_id"/>
+        <result property="birthDate" column="birth_date"/>
+        <result property="city" column="city"/>
+        <result property="district" column="district"/>
+        <result property="province" column="province"/>
+        <result property="streetAddress" column="street_address"/>
+        <result property="state" column="state"/>
+        <result property="type" column="type"/>
+        <result property="lastLoginDate" column="last_login_date"/>
+    </resultMap>
 
     <!-- 包含角色信息的map -->
     <resultMap type="com.shmy.dxs.sys.entity.SysUser" id="UserLoginMap">
         <id property="id" column="id"/>
         <result property="login" column="login"/>
-        <result property="password" column="password"/>
+        <result property="passWord" column="pass_word"/>
         <result property="userName" column="user_name"/>
         <result property="address" column="address"/>
         <result property="job" column="job"/>
@@ -31,4 +48,202 @@
         select u.*,ur.id as user_role_id,ur.name,ur.role_name from sys_user u inner join sys_user_role uar on u.id = uar.user_id inner join sys_role ur on uar.role_id = ur.id where u.login = #{login}
     </select>
 
+    <!--根据主键获取对象-->
+    <select id="get" parameterType="com.shmy.dxs.sys.entity.SysUser" resultMap="UserMap">
+		select u.* from sys_user u
+		WHERE id=#{id}
+	</select>
+
+    <!--保存-->
+    <insert id="save" parameterType="com.shmy.dxs.sys.entity.SysUser" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sys_user(login,pass_word,user_name,address,job,group_id,birth_date,city,district,province,street_address,state,type,last_login_date)
+		VALUES(#{login},#{passWord},#{userName},#{address},#{job},#{groupId},#{birthDate},#{city},#{district},#{province},#{streetAddress},#{state},#{type},#{lastLoginDate})
+	</insert>
+
+    <!--修改-->
+    <update id="update" parameterType="com.shmy.dxs.sys.entity.SysUser">
+		UPDATE sys_user SET user_name=#{userName},address=#{address},job=#{job},group_id=#{orgGroup.groupId},birth_date=#{birthDate},city=#{city},district=#{district},province=#{province},street_address=#{streetAddress}
+		WHERE id=#{id}
+	</update>
+
+    <!--删除-->
+    <delete id="delete" parameterType="com.shmy.dxs.sys.entity.SysUser">
+		DELETE FROM sys_user WHERE id=#{id}
+	</delete>
+
+    <!--分页查询组织架构底下的用户-->
+    <select id="findGroupUserByPage" parameterType="com.shmy.dxs.sys.entity.SysQueryUser" resultMap="UserMap">
+        select u.* from sys_user u
+        WHERE 1=1
+        <if test="userName!=null and userName!='' ">
+            AND u.user_name like concat(#{userName},'%')
+        </if>
+        <if test="sort!= null and sort!='' ">
+            order by ${sort} ${order}
+        </if>
+        limit #{offset},#{limit}
+    </select>
+
+    <!--统计组织架构底下的用户-->
+    <select id="countGroupUser" parameterType="com.shmy.dxs.sys.entity.SysQueryUser" resultType="int">
+        select count(1) from sys_user u
+        WHERE 1=1
+        <if test="userName!=null and userName!='' ">
+            AND u.user_name like concat(#{userName},'%')
+        </if>
+    </select>
+
+    <!--分页查询-->
+    <select id="findByPage" parameterType="com.shmy.dxs.sys.entity.SysQueryUser" resultMap="UserMap">
+        select u.* from sys_user u
+        WHERE 1=1
+        <if test="login!=null and login!='' ">
+            AND u.login=#{login}
+        </if>
+        <if test="passWord!=null and passWord!='' ">
+            AND u.pass_word=#{passWord}
+        </if>
+        <if test="userName!=null and userName!='' ">
+            AND u.user_name=#{userName}
+        </if>
+        <if test="address!=null and address!='' ">
+            AND u.address=#{address}
+        </if>
+        <if test="job!=null and job!='' ">
+            AND u.job=#{job}
+        </if>
+        <if test="groupId!=null and groupId!='' ">
+            AND u.group_id=#{groupId}
+        </if>
+        <if test="birthDate!=null and birthDate!='' ">
+            AND u.birth_date=#{birthDate}
+        </if>
+        <if test="city!=null and city!='' ">
+            AND u.city=#{city}
+        </if>
+        <if test="district!=null and district!='' ">
+            AND u.district=#{district}
+        </if>
+        <if test="province!=null and province!='' ">
+            AND u.province=#{province}
+        </if>
+        <if test="streetAddress!=null and streetAddress!='' ">
+            AND u.street_address=#{streetAddress}
+        </if>
+        <if test="state!=null and state!='' ">
+            AND u.state=#{state}
+        </if>
+        <if test="type!=null and type!='' ">
+            AND u.type=#{type}
+        </if>
+        <if test="lastLoginDate!=null and lastLoginDate!='' ">
+            AND u.last_login_date=#{lastLoginDate}
+        </if>
+        <if test="sort!= null and sort!='' ">
+            order by ${sort} ${order}
+        </if>
+        limit #{offset},#{limit}
+    </select>
+
+    <!--统计-->
+    <select id="count" parameterType="com.shmy.dxs.sys.entity.SysQueryUser" resultType="int">
+        SELECT count(*) FROM sys_user
+        WHERE 1=1
+        <if test="login!=null and login!='' ">
+            AND login=#{login}
+        </if>
+        <if test="passWord!=null and passWord!='' ">
+            AND pass_word=#{passWord}
+        </if>
+        <if test="userName!=null and userName!='' ">
+            AND user_name=#{userName}
+        </if>
+        <if test="address!=null and address!='' ">
+            AND address=#{address}
+        </if>
+        <if test="job!=null and job!='' ">
+            AND job=#{job}
+        </if>
+        <if test="groupId!=null and groupId!='' ">
+            AND group_id=#{groupId}
+        </if>
+        <if test="birthDate!=null and birthDate!='' ">
+            AND birth_date=#{birthDate}
+        </if>
+        <if test="city!=null and city!='' ">
+            AND city=#{city}
+        </if>
+        <if test="district!=null and district!='' ">
+            AND district=#{district}
+        </if>
+        <if test="province!=null and province!='' ">
+            AND province=#{province}
+        </if>
+        <if test="streetAddress!=null and streetAddress!='' ">
+            AND street_address=#{streetAddress}
+        </if>
+        <if test="state!=null and state!='' ">
+            AND state=#{state}
+        </if>
+        <if test="type!=null and type!='' ">
+            AND type=#{type}
+        </if>
+        <if test="lastLoginDate!=null and lastLoginDate!='' ">
+            AND last_login_date=#{lastLoginDate}
+        </if>
+        <if test="sort!= null and sort!='' ">
+            order by ${sort} ${order}
+        </if>
+    </select>
+
+    <!--查询-->
+    <select id="query" parameterType="com.shmy.dxs.sys.entity.SysQueryUser" resultMap="UserMap">
+        SELECT id,login,pass_word,user_name,address,job,group_id,birth_date,city,district,province,street_address,state,type,last_login_date FROM sys_user
+        WHERE 1=1
+        <if test="login!=null and login!='' ">
+            AND login=#{login}
+        </if>
+        <if test="passWord!=null and passWord!='' ">
+            AND pass_word=#{passWord}
+        </if>
+        <if test="userName!=null and userName!='' ">
+            AND user_name=#{userName}
+        </if>
+        <if test="address!=null and address!='' ">
+            AND address=#{address}
+        </if>
+        <if test="job!=null and job!='' ">
+            AND job=#{job}
+        </if>
+        <if test="groupId!=null and groupId!='' ">
+            AND group_id=#{groupId}
+        </if>
+        <if test="birthDate!=null and birthDate!='' ">
+            AND birth_date=#{birthDate}
+        </if>
+        <if test="city!=null and city!='' ">
+            AND city=#{city}
+        </if>
+        <if test="district!=null and district!='' ">
+            AND district=#{district}
+        </if>
+        <if test="province!=null and province!='' ">
+            AND province=#{province}
+        </if>
+        <if test="streetAddress!=null and streetAddress!='' ">
+            AND street_address=#{streetAddress}
+        </if>
+        <if test="state!=null and state!='' ">
+            AND state=#{state}
+        </if>
+        <if test="type!=null and type!='' ">
+            AND type=#{type}
+        </if>
+        <if test="lastLoginDate!=null and lastLoginDate!='' ">
+            AND last_login_date=#{lastLoginDate}
+        </if>
+        <if test="sort!= null and sort!='' ">
+            order by ${sort} ${order}
+        </if>
+    </select>
 </mapper>

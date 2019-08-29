@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shmy.dxs.sys.dao.SysDictTypeDao">
+	<resultMap type="com.shmy.dxs.sys.entity.SysDictType" id="SysDictTypeMap">
+		<id property="id" column="id"/>
+		<result property="dictName" column="dict_name"/>
+		<result property="dictType" column="dict_type"/>
+		<result property="isSys" column="is_sys"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createDate" column="create_date"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="status" column="status"/>
+	</resultMap>
+
+	<!--根据主键获取对象-->
+	<select id="get" parameterType="com.shmy.dxs.sys.entity.SysDictType" resultMap="SysDictTypeMap">
+		SELECT id,dict_name,dict_type,is_sys,create_by,create_date,update_by,update_date,status FROM sys_dict_type 
+		WHERE id=#{id}
+	</select>
+
+	<!--保存-->
+	<insert id="save" parameterType="com.shmy.dxs.sys.entity.SysDictType">
+		INSERT INTO sys_dict_type(id,dict_name,dict_type,is_sys,create_by,create_date,update_by,update_date,status)
+		VALUES(#{id},#{dictName},#{dictType},#{isSys},#{createBy},#{createDate},#{updateBy},#{updateDate},#{status})
+	</insert>
+
+	<!--修改-->
+	<update id="update" parameterType="com.shmy.dxs.sys.entity.SysDictType">
+		UPDATE sys_dict_type SET dict_name=#{dictName},dict_type=#{dictType},is_sys=#{isSys},create_by=#{createBy},create_date=#{createDate},update_by=#{updateBy},update_date=#{updateDate},status=#{status}
+		WHERE id=#{id}
+	</update>
+
+	<!--删除-->
+	<delete id="delete" parameterType="com.shmy.dxs.sys.entity.SysDictType">
+		 DELETE FROM sys_dict_type WHERE id=#{id}
+	</delete>
+
+	<!--分页查询-->
+	<select id="findByPage" parameterType="com.shmy.dxs.sys.entity.SysDictTypeQuery" resultMap="SysDictTypeMap">
+		SELECT id,dict_name,dict_type,is_sys,create_by,create_date,update_by,update_date,status FROM sys_dict_type
+		WHERE 1=1
+		<if test="id!=null and id!='' "  >
+		AND id=#{id}
+		</if>
+		<if test="dictName!=null and dictName!='' "  >
+		AND dict_name=#{dictName}
+		</if>
+		<if test="dictType!=null and dictType!='' "  >
+		AND dict_type=#{dictType}
+		</if>
+		<if test="isSys!=null and isSys!='' "  >
+		AND is_sys=#{isSys}
+		</if>
+		<if test="createBy!=null and createBy!='' "  >
+		AND create_by=#{createBy}
+		</if>
+		<if test="createDate!=null and createDate!='' "  >
+		AND create_date=#{createDate}
+		</if>
+		<if test="updateBy!=null and updateBy!='' "  >
+		AND update_by=#{updateBy}
+		</if>
+		<if test="updateDate!=null and updateDate!='' "  >
+		AND update_date=#{updateDate}
+		</if>
+		<if test="status!=null and status!='' "  >
+		AND status=#{status}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+		limit #{offset},#{limit}
+	</select>
+
+	<!--统计-->
+	<select id="count" parameterType="com.shmy.dxs.sys.entity.SysDictTypeQuery" resultType="int">
+		SELECT count(*) FROM sys_dict_type
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="dictName!=null and dictName!='' ">
+		AND dict_name=#{dictName}
+		</if>
+		<if test="dictType!=null and dictType!='' ">
+		AND dict_type=#{dictType}
+		</if>
+		<if test="isSys!=null and isSys!='' ">
+		AND is_sys=#{isSys}
+		</if>
+		<if test="createBy!=null and createBy!='' ">
+		AND create_by=#{createBy}
+		</if>
+		<if test="createDate!=null and createDate!='' ">
+		AND create_date=#{createDate}
+		</if>
+		<if test="updateBy!=null and updateBy!='' ">
+		AND update_by=#{updateBy}
+		</if>
+		<if test="updateDate!=null and updateDate!='' ">
+		AND update_date=#{updateDate}
+		</if>
+		<if test="status!=null and status!='' ">
+		AND status=#{status}
+		</if>
+	</select>
+
+	<!--查询-->
+	<select id="query" parameterType="com.shmy.dxs.sys.entity.SysDictTypeQuery" resultMap="SysDictTypeMap">
+		SELECT id,dict_name,dict_type,is_sys,create_by,create_date,update_by,update_date,status FROM sys_dict_type
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="dictName!=null and dictName!='' ">
+		AND dict_name=#{dictName}
+		</if>
+		<if test="dictType!=null and dictType!='' ">
+		AND dict_type=#{dictType}
+		</if>
+		<if test="isSys!=null and isSys!='' ">
+		AND is_sys=#{isSys}
+		</if>
+		<if test="createBy!=null and createBy!='' ">
+		AND create_by=#{createBy}
+		</if>
+		<if test="createDate!=null and createDate!='' ">
+		AND create_date=#{createDate}
+		</if>
+		<if test="updateBy!=null and updateBy!='' ">
+		AND update_by=#{updateBy}
+		</if>
+		<if test="updateDate!=null and updateDate!='' ">
+		AND update_date=#{updateDate}
+		</if>
+		<if test="status!=null and status!='' ">
+		AND status=#{status}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+	</select>
+</mapper>

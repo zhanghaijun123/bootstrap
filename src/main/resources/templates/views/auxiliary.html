@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap 模板</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>文本</h2>
+    <p class="text-muted">该段落使用了样式 "text-muted"。</p>
+    <a class="text-muted" href="//www.w3cschool.cc">链接使用了样式 "text-muted"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>文本</h2>
+    <p class="text-primary">该段落使用了样式 "text-primary"。</p>
+    <a class="text-primary" href="//www.w3cschool.cc">链接使用了样式 "text-primary"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>文本</h2>
+    <p class="text-success">该段落使用了样式 "text-success"。</p>
+    <a class="text-success" href="//www.w3cschool.cc">链接使用了样式 "text-success"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>文本</h2>
+    <p class="text-info">该段落使用了样式 "text-info"。</p>
+    <a class="text-info" href="//www.w3cschool.cc">链接使用了样式 "text-info"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>文本</h2>
+    <p class="text-warning">该段落使用了样式 "text-warning"。</p>
+    <a class="text-warning" href="//www.w3cschool.cc">链接使用了样式 "text-warning"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>文本</h2>
+    <p class="text-danger">该段落使用了样式 "text-danger"。</p>
+    <a class="text-danger" href="//www.w3cschool.cc">链接使用了样式 "text-danger"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>背景</h2>
+    <p class="bg-primary">该段落使用了类 "bg-primary"。</p>
+    <a class="bg-primary" href="/index.php">该链接使用了类 "bg-primary"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>背景</h2>
+    <p class="bg-success">该段落使用了类 "bg-success"。</p>
+    <a class="bg-success" href="/index.php">该链接使用了类 "bg-success"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>背景</h2>
+    <p class="bg-info">该段落使用了类 "bg-info"。</p>
+    <a class="bg-info" href="/index.php">该链接使用了类 "bg-info"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>背景</h2>
+    <p class="bg-warning">该段落使用了类 "bg-warning"。</p>
+    <a class="bg-warning" href="/index.php">该链接使用了类 "bg-warning"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>背景</h2>
+    <p class="bg-danger">该段落使用了类 "bg-danger"。</p>
+    <a class="bg-danger" href="/index.php">该链接使用了类 "bg-danger"。</a>
+</div>
+<hr/>
+<div class="container">
+    <h2>实例</h2>
+    <div class="pull-left">元素浮动到左侧</div>
+    <div class="pull-right">元素浮动到右侧</div>
+</div>
+<hr/>
+<div class="container">
+    <h2>实例</h2>
+    <div class="center-block" style="width:150px;background-color:#ccc;">该 div 显示在中间</div>
+</div>
+<hr/>
+<div class="container">
+    <h2>实例</h2>
+    <p> .show 类强制一个元素显示:</p>
+    <p class="show">该段落强制显示</p>
+    <p> .hidden 类强制一个元素隐藏 :</p>
+    <p class="hidden">该段落强制隐藏</p>
+</div>
+<hr/>
+<div class="container">
+    <h2>实例</h2>
+    <p> .close 类可以显示一个关闭按钮。</p>
+    <button type="button" class="close"><span aria-hidden="true">x</span><span class="sr-only">关闭</span></button>
+</div>
+<hr/>
+<div class="container">
+    <h2>实例</h2>
+    <p> .caret 类显示了一个下拉的功能: <span class="caret"></span></p>
+    <p> .caret 类在按钮中使用：</p>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Menu <span class="caret"></span></button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">一个链接</a></li>
+            <li><a href="#">另一个链接 link</a></li>
+            <li><a href="#">其他功能</a></li>
+        </ul>
+    </div>
+</div>
+
+<hr/>
+<!--aria-hidden="true" 主要是帮助残障人士（如失明）使用识读设备（自动读取内容并自动播放出来），播放到带此属性的内容时会自动跳过，以免残障人士混淆-->
+<p>关闭图标实例
+    <button type="button" class="close" aria-hidden="true">
+        &times;
+    </button>
+</p>
+<hr/>
+<!--使用插入符表示下拉功能和方向。使用带有 class caret 的 <span> 元素得到该功能。-->
+<p>插入符实例
+    <span class="caret"></span>
+</p>
+<hr/>
+<!--您可以分别使用 class pull-left 或 pull-right 来把元素向左或向右浮动。-->
+<div class="pull-left">
+    向左快速浮动
+</div>
+<div class="pull-right">
+    向右快速浮动
+</div>
+<hr/>
+<!--使用 class center-block 来居中元素-->
+<div class="row">
+    <div class="center-block" style="width:200px;background-color:#ccc;">
+        这是 center-block 实例
+    </div>
+</div>
+<hr/>
+<!--如需清除元素的浮动，请使用 .clearfix class。-->
+<div class="clearfix"  style="background: #D8D8D8;border: 1px solid #000;padding: 10px;">
+    <div class="pull-left" style="background:#58D3F7;">
+        向左快速浮动
+    </div>
+    <div class="pull-right" style="background: #DA81F5;">
+        向右快速浮动
+    </div>
+</div>
+<hr/>
+<!--您可以通过使用 class .show 和 .hidden 来强行设置元素显示或隐藏（包括屏幕阅读器）。-->
+<div class="row" style="padding: 91px 100px 19px 50px;">
+    <div class="show" style="margin-left:10px;width:300px;background-color:#ccc;">
+        这是 show class 的实例
+    </div>
+    <div class="hidden" style="width:200px;background-color:#ccc;">
+        这是 hide class 的实例
+    </div>
+</div>
+<hr/>
+<!--您可以通过使用 class .sr-only 来把元素对所有设备隐藏，除了屏幕阅读器。-->
+<div class="row" style="padding: 91px 100px 19px 50px;">
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label class="sr-only" for="email">Email 地址</label>
+            <input type="email" class="form-control" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="pass">密码</label>
+            <input type="password" class="form-control" placeholder="Password">
+        </div>
+    </form>
+</div>
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="/static/js/jquery-1.9.1.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

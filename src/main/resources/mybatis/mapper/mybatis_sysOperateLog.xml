@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shmy.dxs.sys.dao.SysOperateLogDao">
+	<resultMap type="com.shmy.dxs.sys.entity.SysOperateLog" id="SysOperateLogMap">
+		<id property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="operateType" column="operate_type"/>
+		<result property="module" column="module"/>
+		<result property="content" column="content"/>
+		<result property="ip" column="ip"/>
+		<result property="objPk" column="obj_pk"/>
+		<result property="operateDate" column="operate_date"/>
+		<result property="result" column="result"/>
+		<result property="delFlag" column="del_flag"/>
+	</resultMap>
+
+	<!--根据主键获取对象-->
+	<select id="get" parameterType="com.shmy.dxs.sys.entity.SysOperateLog" resultMap="SysOperateLogMap">
+		SELECT id,user_id,operate_type,module,content,ip,obj_pk,operate_date,result,del_flag FROM sys_operate_log 
+		WHERE id=#{id}
+	</select>
+
+	<!--保存-->
+	<insert id="save" parameterType="com.shmy.dxs.sys.entity.SysOperateLog">
+		INSERT INTO sys_operate_log(id,user_id,operate_type,module,content,ip,obj_pk,operate_date,result,del_flag)
+		VALUES(#{id},#{userId},#{operateType},#{module},#{content},#{ip},#{objPk},#{operateDate},#{result},#{delFlag})
+	</insert>
+
+	<!--修改-->
+	<update id="update" parameterType="com.shmy.dxs.sys.entity.SysOperateLog">
+		UPDATE sys_operate_log SET user_id=#{userId},operate_type=#{operateType},module=#{module},content=#{content},ip=#{ip},obj_pk=#{objPk},operate_date=#{operateDate},result=#{result},del_flag=#{delFlag}
+		WHERE id=#{id}
+	</update>
+
+	<!--删除-->
+	<delete id="delete" parameterType="com.shmy.dxs.sys.entity.SysOperateLog">
+		 DELETE FROM sys_operate_log WHERE id=#{id}
+	</delete>
+
+	<!--分页查询-->
+	<select id="findByPage" parameterType="com.shmy.dxs.sys.entity.SysOperateLogQuery" resultMap="SysOperateLogMap">
+		SELECT id,user_id,operate_type,module,content,ip,obj_pk,operate_date,result,del_flag FROM sys_operate_log
+		WHERE 1=1
+		<if test="id!=null and id!='' "  >
+		AND id=#{id}
+		</if>
+		<if test="userId!=null and userId!='' "  >
+		AND user_id=#{userId}
+		</if>
+		<if test="operateType!=null and operateType!='' "  >
+		AND operate_type=#{operateType}
+		</if>
+		<if test="module!=null and module!='' "  >
+		AND module=#{module}
+		</if>
+		<if test="content!=null and content!='' "  >
+		AND content=#{content}
+		</if>
+		<if test="ip!=null and ip!='' "  >
+		AND ip=#{ip}
+		</if>
+		<if test="objPk!=null and objPk!='' "  >
+		AND obj_pk=#{objPk}
+		</if>
+		<if test="operateDate!=null and operateDate!='' "  >
+		AND operate_date=#{operateDate}
+		</if>
+		<if test="result!=null and result!='' "  >
+		AND result=#{result}
+		</if>
+		<if test="delFlag!=null and delFlag!='' "  >
+		AND del_flag=#{delFlag}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+		limit #{offset},#{limit}
+	</select>
+
+	<!--统计-->
+	<select id="count" parameterType="com.shmy.dxs.sys.entity.SysOperateLogQuery" resultType="int">
+		SELECT count(*) FROM sys_operate_log
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="userId!=null and userId!='' ">
+		AND user_id=#{userId}
+		</if>
+		<if test="operateType!=null and operateType!='' ">
+		AND operate_type=#{operateType}
+		</if>
+		<if test="module!=null and module!='' ">
+		AND module=#{module}
+		</if>
+		<if test="content!=null and content!='' ">
+		AND content=#{content}
+		</if>
+		<if test="ip!=null and ip!='' ">
+		AND ip=#{ip}
+		</if>
+		<if test="objPk!=null and objPk!='' ">
+		AND obj_pk=#{objPk}
+		</if>
+		<if test="operateDate!=null and operateDate!='' ">
+		AND operate_date=#{operateDate}
+		</if>
+		<if test="result!=null and result!='' ">
+		AND result=#{result}
+		</if>
+		<if test="delFlag!=null and delFlag!='' ">
+		AND del_flag=#{delFlag}
+		</if>
+	</select>
+
+	<!--查询-->
+	<select id="query" parameterType="com.shmy.dxs.sys.entity.SysOperateLogQuery" resultMap="SysOperateLogMap">
+		SELECT id,user_id,operate_type,module,content,ip,obj_pk,operate_date,result,del_flag FROM sys_operate_log
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="userId!=null and userId!='' ">
+		AND user_id=#{userId}
+		</if>
+		<if test="operateType!=null and operateType!='' ">
+		AND operate_type=#{operateType}
+		</if>
+		<if test="module!=null and module!='' ">
+		AND module=#{module}
+		</if>
+		<if test="content!=null and content!='' ">
+		AND content=#{content}
+		</if>
+		<if test="ip!=null and ip!='' ">
+		AND ip=#{ip}
+		</if>
+		<if test="objPk!=null and objPk!='' ">
+		AND obj_pk=#{objPk}
+		</if>
+		<if test="operateDate!=null and operateDate!='' ">
+		AND operate_date=#{operateDate}
+		</if>
+		<if test="result!=null and result!='' ">
+		AND result=#{result}
+		</if>
+		<if test="delFlag!=null and delFlag!='' ">
+		AND del_flag=#{delFlag}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+	</select>
+</mapper>

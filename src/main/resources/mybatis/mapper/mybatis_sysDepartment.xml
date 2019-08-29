@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shmy.dxs.sys.dao.SysDepartmentDao">
+	<resultMap type="com.shmy.dxs.sys.entity.SysDepartment" id="SysDepartmentMap">
+		<id property="id" column="id"/>
+		<result property="departmentName" column="department_name"/>
+		<result property="parentId" column="parent_id"/>
+		<result property="departmentUps" column="department_ups"/>
+		<result property="departmentCharge" column="department_charge"/>
+		<result property="departmentCode" column="department_code"/>
+		<result property="createBy" column="create_by"/>
+		<result property="createDate" column="create_date"/>
+		<result property="updateBy" column="update_by"/>
+		<result property="updateDate" column="update_date"/>
+		<result property="delFlag" column="del_flag"/>
+	</resultMap>
+
+	<!--根据主键获取对象-->
+	<select id="get" parameterType="com.shmy.dxs.sys.entity.SysDepartment" resultMap="SysDepartmentMap">
+		SELECT id,department_name,parent_id,department_ups,department_charge,department_code,create_by,create_date,update_by,update_date,del_flag FROM sys_department 
+		WHERE id=#{id}
+	</select>
+
+	<!--保存-->
+	<insert id="save" parameterType="com.shmy.dxs.sys.entity.SysDepartment">
+		INSERT INTO sys_department(id,department_name,parent_id,department_ups,department_charge,department_code,create_by,create_date,update_by,update_date,del_flag)
+		VALUES(#{id},#{departmentName},#{parentId},#{departmentUps},#{departmentCharge},#{departmentCode},#{createBy},#{createDate},#{updateBy},#{updateDate},#{delFlag})
+	</insert>
+
+	<!--修改-->
+	<update id="update" parameterType="com.shmy.dxs.sys.entity.SysDepartment">
+		UPDATE sys_department SET department_name=#{departmentName},parent_id=#{parentId},department_ups=#{departmentUps},department_charge=#{departmentCharge},department_code=#{departmentCode},create_by=#{createBy},create_date=#{createDate},update_by=#{updateBy},update_date=#{updateDate},del_flag=#{delFlag}
+		WHERE id=#{id}
+	</update>
+
+	<!--删除-->
+	<delete id="delete" parameterType="com.shmy.dxs.sys.entity.SysDepartment">
+		 DELETE FROM sys_department WHERE id=#{id}
+	</delete>
+
+	<!--分页查询-->
+	<select id="findByPage" parameterType="com.shmy.dxs.sys.entity.SysDepartmentQuery" resultMap="SysDepartmentMap">
+		SELECT id,department_name,parent_id,department_ups,department_charge,department_code,create_by,create_date,update_by,update_date,del_flag FROM sys_department
+		WHERE 1=1
+		<if test="id!=null and id!='' "  >
+		AND id=#{id}
+		</if>
+		<if test="departmentName!=null and departmentName!='' "  >
+		AND department_name=#{departmentName}
+		</if>
+		<if test="parentId!=null and parentId!='' "  >
+		AND parent_id=#{parentId}
+		</if>
+		<if test="departmentUps!=null and departmentUps!='' "  >
+		AND department_ups=#{departmentUps}
+		</if>
+		<if test="departmentCharge!=null and departmentCharge!='' "  >
+		AND department_charge=#{departmentCharge}
+		</if>
+		<if test="departmentCode!=null and departmentCode!='' "  >
+		AND department_code=#{departmentCode}
+		</if>
+		<if test="createBy!=null and createBy!='' "  >
+		AND create_by=#{createBy}
+		</if>
+		<if test="createDate!=null and createDate!='' "  >
+		AND create_date=#{createDate}
+		</if>
+		<if test="updateBy!=null and updateBy!='' "  >
+		AND update_by=#{updateBy}
+		</if>
+		<if test="updateDate!=null and updateDate!='' "  >
+		AND update_date=#{updateDate}
+		</if>
+		<if test="delFlag!=null and delFlag!='' "  >
+		AND del_flag=#{delFlag}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+		limit #{offset},#{limit}
+	</select>
+
+	<!--统计-->
+	<select id="count" parameterType="com.shmy.dxs.sys.entity.SysDepartmentQuery" resultType="int">
+		SELECT count(*) FROM sys_department
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="departmentName!=null and departmentName!='' ">
+		AND department_name=#{departmentName}
+		</if>
+		<if test="parentId!=null and parentId!='' ">
+		AND parent_id=#{parentId}
+		</if>
+		<if test="departmentUps!=null and departmentUps!='' ">
+		AND department_ups=#{departmentUps}
+		</if>
+		<if test="departmentCharge!=null and departmentCharge!='' ">
+		AND department_charge=#{departmentCharge}
+		</if>
+		<if test="departmentCode!=null and departmentCode!='' ">
+		AND department_code=#{departmentCode}
+		</if>
+		<if test="createBy!=null and createBy!='' ">
+		AND create_by=#{createBy}
+		</if>
+		<if test="createDate!=null and createDate!='' ">
+		AND create_date=#{createDate}
+		</if>
+		<if test="updateBy!=null and updateBy!='' ">
+		AND update_by=#{updateBy}
+		</if>
+		<if test="updateDate!=null and updateDate!='' ">
+		AND update_date=#{updateDate}
+		</if>
+		<if test="delFlag!=null and delFlag!='' ">
+		AND del_flag=#{delFlag}
+		</if>
+	</select>
+
+	<!--查询-->
+	<select id="query" parameterType="com.shmy.dxs.sys.entity.SysDepartmentQuery" resultMap="SysDepartmentMap">
+		SELECT id,department_name,parent_id,department_ups,department_charge,department_code,create_by,create_date,update_by,update_date,del_flag FROM sys_department
+		WHERE 1=1
+		<if test="id!=null and id!='' ">
+		AND id=#{id}
+		</if>
+		<if test="departmentName!=null and departmentName!='' ">
+		AND department_name=#{departmentName}
+		</if>
+		<if test="parentId!=null and parentId!='' ">
+		AND parent_id=#{parentId}
+		</if>
+		<if test="departmentUps!=null and departmentUps!='' ">
+		AND department_ups=#{departmentUps}
+		</if>
+		<if test="departmentCharge!=null and departmentCharge!='' ">
+		AND department_charge=#{departmentCharge}
+		</if>
+		<if test="departmentCode!=null and departmentCode!='' ">
+		AND department_code=#{departmentCode}
+		</if>
+		<if test="createBy!=null and createBy!='' ">
+		AND create_by=#{createBy}
+		</if>
+		<if test="createDate!=null and createDate!='' ">
+		AND create_date=#{createDate}
+		</if>
+		<if test="updateBy!=null and updateBy!='' ">
+		AND update_by=#{updateBy}
+		</if>
+		<if test="updateDate!=null and updateDate!='' ">
+		AND update_date=#{updateDate}
+		</if>
+		<if test="delFlag!=null and delFlag!='' ">
+		AND del_flag=#{delFlag}
+		</if>
+		<if test="sort!= null">
+		order by ${sort} ${order}
+		</if>
+	</select>
+</mapper>
