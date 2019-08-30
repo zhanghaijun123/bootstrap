@@ -6,7 +6,7 @@ import java.util.Date;
  **/
 public class SysDictData {
 	//id 
-	private String id;
+	private long id;
 	//字典标签 
 	private String dictLabel;
 	//字典键值 
@@ -28,11 +28,11 @@ public class SysDictData {
 	//状态（0删除 1启用  2停用） 
 	private boolean status;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

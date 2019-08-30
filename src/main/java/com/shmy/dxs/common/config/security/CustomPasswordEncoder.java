@@ -22,10 +22,4 @@ public class CustomPasswordEncoder implements PasswordEncoder {
         return encoder.isPasswordValid(encodedPassword, rawPassword.toString(), "dxs");
     }
 
-    public static void main(String[] args) {
-        String pass="sysadmin";
-        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
-        String dxs = encoder.encodePassword(pass, "dxs");
-        System.out.println("dxs = " + dxs);
-    }
 }

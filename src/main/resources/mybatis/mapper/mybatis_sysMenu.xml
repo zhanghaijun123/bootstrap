@@ -21,6 +21,14 @@
 		<result property="delFlag" column="del_flag"/>
 		<result property="isAddrouter" column="is_addrouter"/>
 	</resultMap>
+    <!-- 加载用户的菜单树的数据 -->
+    <select id="loadUserTree" resultMap="SysMenuMap" parameterType="com.shmy.dxs.sys.entity.SysUser">
+        select DISTINCT t.*  from sys_menu t inner join sys_role_menu rat on t.id = rat.menu_id inner join sys_role ur on rat.role_id = ur.id where ur.id in
+        <foreach collection="roles" index="index" item="role" open="(" separator="," close=")">
+            #{role.id}
+        </foreach>
+        having t.menu_type=0
+    </select>
 
 	<!--根据主键获取对象-->
 	<select id="get" parameterType="com.shmy.dxs.sys.entity.SysMenu" resultMap="SysMenuMap">
@@ -231,4 +239,5 @@
 		order by ${sort} ${order}
 		</if>
 	</select>
+
 </mapper>

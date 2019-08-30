@@ -6,7 +6,7 @@ import java.util.Date;
  **/
 public class SysDepartment {
 	//id 
-	private String id;
+	private long id;
 	//部门名称 
 	private String departmentName;
 	//上级id 
@@ -27,11 +27,11 @@ public class SysDepartment {
 	//删除标记(0删除  1正常) 
 	private boolean delFlag;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

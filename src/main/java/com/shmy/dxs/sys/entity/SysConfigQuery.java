@@ -7,23 +7,23 @@ import com.shmy.dxs.common.base.entity.QueryBase;
  **/
 public class SysConfigQuery extends QueryBase {
 	//id 
-	private String id;
-	//名称 
+	private long id;
+	//名称
 	private String name;
-	//值(0不开启 1开启） 
+	//值(0不开启 1开启）
 	private Integer codeValue;
-	//备注 
+	//备注
 	private String remark;
-	//类型 
+	//类型
 	private String type;
-	//排序 
+	//排序
 	private Long sorted;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

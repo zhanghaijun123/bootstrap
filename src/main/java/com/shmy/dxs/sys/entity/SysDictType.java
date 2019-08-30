@@ -6,7 +6,7 @@ import java.util.Date;
  **/
 public class SysDictType {
 	//id 
-	private String id;
+	private long id;
 	//字典名称 
 	private String dictName;
 	//字典类型 
@@ -24,11 +24,11 @@ public class SysDictType {
 	//状态(0删除   1启用   2停用 ） 
 	private boolean status;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

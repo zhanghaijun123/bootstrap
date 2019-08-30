@@ -1,16 +1,18 @@
 package com.shmy.dxs.sys.entity;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *@author zhanghj
  **/
-public class SysMenu {
+public class SysMenu implements Comparable<SysMenu>{
 	//id 
-	private String id;
+	private long id;
 	//父级名称 
 	private String parentName;
 	//父级编号 
-	private String parentId;
+	private int parentId;
 	//菜单名称 
 	private String name;
 	//组件 
@@ -41,12 +43,16 @@ public class SysMenu {
 	private boolean delFlag;
 	//是否给按钮添加到路由  0不添加  1添加 
 	private boolean isAddrouter;
+	// 父菜单信息
+	private SysMenu tree;
+	// 子菜单节点信息
+	private List<SysMenu> child = new ArrayList<SysMenu>();
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -58,11 +64,11 @@ public class SysMenu {
 		this.parentName = parentName;
 	}
 
-	public String getParentId() {
+	public int getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(String parentId) {
+	public void setParentId(int parentId) {
 		this.parentId = parentId;
 	}
 
@@ -186,4 +192,25 @@ public class SysMenu {
 		this.isAddrouter = isAddrouter;
 	}
 
+	public SysMenu getTree() {
+		return tree;
+	}
+
+	public void setTree(SysMenu tree) {
+		this.tree = tree;
+	}
+
+	public List<SysMenu> getChild() {
+		return child;
+	}
+
+	public void setChild(List<SysMenu> child) {
+		this.child = child;
+	}
+
+	@Override
+	public int compareTo(SysMenu o) {
+		long i = this.getSorted() - o.getSorted();
+		return Integer.parseInt(i+"");
+	}
 }

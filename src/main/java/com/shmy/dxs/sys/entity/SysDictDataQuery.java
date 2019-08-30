@@ -7,7 +7,7 @@ import com.shmy.dxs.common.base.entity.QueryBase;
  **/
 public class SysDictDataQuery extends QueryBase {
 	//id 
-	private String id;
+	private long id;
 	//字典标签 
 	private String dictLabel;
 	//字典键值 
@@ -29,11 +29,11 @@ public class SysDictDataQuery extends QueryBase {
 	//状态（0删除 1启用  2停用） 
 	private String status;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

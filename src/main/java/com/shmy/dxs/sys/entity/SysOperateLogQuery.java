@@ -7,7 +7,7 @@ import com.shmy.dxs.common.base.entity.QueryBase;
  **/
 public class SysOperateLogQuery extends QueryBase {
 	//id 
-	private String id;
+	private long id;
 	//操作人主键 
 	private String userId;
 	//操作类型 
@@ -27,11 +27,11 @@ public class SysOperateLogQuery extends QueryBase {
 	//删除标记(0删除  1正常) 
 	private String delFlag;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

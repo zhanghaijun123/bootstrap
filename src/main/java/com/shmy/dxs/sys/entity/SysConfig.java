@@ -5,7 +5,7 @@ package com.shmy.dxs.sys.entity;
  **/
 public class SysConfig {
 	//id 
-	private String id;
+	private long id;
 	//名称 
 	private String name;
 	//值(0不开启 1开启） 
@@ -17,11 +17,11 @@ public class SysConfig {
 	//排序 
 	private long sorted;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

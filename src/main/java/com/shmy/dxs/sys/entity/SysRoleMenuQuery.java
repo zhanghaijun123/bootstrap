@@ -7,35 +7,35 @@ import com.shmy.dxs.common.base.entity.QueryBase;
  **/
 public class SysRoleMenuQuery extends QueryBase {
 	//id 
-	private String id;
+	private long id;
 	//角色编号 
-	private String roleId;
+	private long roleId;
 	//菜单编号 
-	private String menuId;
+	private long menuId;
 	//全选标识(0 半选 1全选） 
 	private String checkedStatus;
 
-	public String getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public String getRoleId() {
+	public long getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(String roleId) {
+	public void setRoleId(long roleId) {
 		this.roleId = roleId;
 	}
 
-	public String getMenuId() {
+	public long getMenuId() {
 		return menuId;
 	}
 
-	public void setMenuId(String menuId) {
+	public void setMenuId(long menuId) {
 		this.menuId = menuId;
 	}
 
@@ -46,5 +46,4 @@ public class SysRoleMenuQuery extends QueryBase {
 	public void setCheckedStatus(String checkedStatus) {
 		this.checkedStatus = checkedStatus;
 	}
-
 }
